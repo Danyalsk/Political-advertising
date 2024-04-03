@@ -2,7 +2,6 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "./Map.css";
 
 const svgCode = `
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" id="pin"><path fill="#f05542" d="M8 1C5.239 1 3 3.357 3 6.264S8 15 8 15s5-5.829 5-8.736C13 3.357 10.761 1 8 1zm0 2.925a1.667 1.755 0 0 1 1.667 1.754A1.667 1.755 0 0 1 8 7.434a1.667 1.755 0 0 1-1.667-1.755A1.667 1.755 0 0 1 8 3.925z"></path></svg>
@@ -81,12 +80,12 @@ const MapChart = () => {
   ];
 
   return (
-    <div className="map-container">
+    <div style={{ height: "80vh", width: "100%" }}>
       <MapContainer
         center={[20.5937, 78.9629]}
         zoom={5}
         scrollWheelZoom={false}
-        className="map"
+        style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -99,13 +98,9 @@ const MapChart = () => {
             icon={customIcon}
           >
             <Popup>
-              <div className="popup-content">
-                <p className="advertiser">
-                  Advertiser: {advertiser.advertiser}
-                </p>
-                <p className="total-spent">
-                  Total Spent: {advertiser.total_spent}
-                </p>
+              <div>
+                <p>Advertiser: {advertiser.advertiser}</p>
+                <p>Total Spent: {advertiser.total_spent}</p>
               </div>
             </Popup>
           </Marker>
