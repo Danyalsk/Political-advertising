@@ -1,0 +1,26 @@
+/* MapContainer styles */
+.map-container {
+  height: 67vh;
+  width: 90vh;
+  padding: 40px 0 0 0;
+}
+
+/* Popup content styles */
+
+.popup-content p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.popup-content p.advertiser {
+  font-weight: bold;
+}
+
+.popup-content p.total-spent {
+  color: #007bff;
+}
+
+/* Marker icon styles (optional) */
+.marker-icon {
+  cursor: pointer;
+}
