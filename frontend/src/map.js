@@ -56,15 +56,17 @@ const MapChart = () => {
           regionData={filteredData}
           hoverComponent={({ value }) => {
             handleHover(value);
+            if (!selectedStateData || selectedStateData.length === 0) {
+              return <div>No data available</div>;
+            }
             return (
               <div>
-                {selectedStateData &&
-                  selectedStateData.map((advertiser, index) => (
-                    <div key={index}>
-                      <p>Advertiser: {advertiser.advertiser}</p>
-                      <p>Total Spent: {advertiser.total_spent}</p>
-                    </div>
-                  ))}
+                {selectedStateData.map((advertiser, index) => (
+                  <div key={index}>
+                    <p>Advertiser: {advertiser.advertiser}</p>
+                    <p>Total Spent: {advertiser.total_spent}</p>
+                  </div>
+                ))}
               </div>
             );
           }}
