@@ -18,8 +18,65 @@ const MapChart = () => {
       setAdvertisersData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
+      // Handle error: If API response is 400 or API is offline, use hardcoded data
+      setAdvertisersData([
+        {
+          advertiser: "DEF Enterprises",
+          state: "Karnataka",
+          total_spent: "45000",
+        },
+        {
+          advertiser: "AB Corporation",
+          state: "Maharashtra",
+          total_spent: "70000",
+        },
+        {
+          advertiser: "YZA Corporation",
+          state: "Telangana",
+          total_spent: "53000",
+        },
+        {
+          advertiser: "PQR Group",
+          state: "Rajasthan",
+          total_spent: "52000",
+        },
+        {
+          advertiser: "MNO Industries",
+          state: "West Bengal",
+          total_spent: "48000",
+        },
+        {
+          advertiser: "VWX Ltd",
+          state: "Gujarat",
+          total_spent: "49000",
+        },
+        {
+          advertiser: "JKL Pvt Ltd",
+          state: "Uttar Pradesh",
+          total_spent: "55000",
+        },
+        {
+          advertiser: "STU Co.",
+          state: "Kerala",
+          total_spent: "67000",
+        },
+        {
+          advertiser: "GHI Ltd",
+          state: "Tamil Nadu",
+          total_spent: "60000",
+        },
+        {
+          advertiser: "XYZ Company",
+          state: "Delhi",
+          total_spent: "50000",
+        },
+      ]);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleHover = (value) => {
     const hoveredState = value.name;
