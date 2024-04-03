@@ -77,6 +77,67 @@ const MapChart = () => {
       longitude: 77.1025,
       total_spent: "50000",
     },
+    // Additional entries
+    {
+      advertiser: "New Company 11",
+      latitude: 31.2345,
+      longitude: 72.8765,
+      total_spent: "59000",
+    },
+    {
+      advertiser: "New Company 12",
+      latitude: 27.8765,
+      longitude: 73.2345,
+      total_spent: "62000",
+    },
+    {
+      advertiser: "New Company 13",
+      latitude: 14.4567,
+      longitude: 79.5678,
+      total_spent: "58000",
+    },
+    {
+      advertiser: "New Company 14",
+      latitude: 16.789,
+      longitude: 77.1234,
+      total_spent: "61000",
+    },
+    {
+      advertiser: "New Company 15",
+      latitude: 23.5678,
+      longitude: 76.3456,
+      total_spent: "54000",
+    },
+    {
+      advertiser: "New Company 16",
+      latitude: 18.1234,
+      longitude: 75.789,
+      total_spent: "55000",
+    },
+    {
+      advertiser: "New Company 17",
+      latitude: 25.6789,
+      longitude: 71.8901,
+      total_spent: "63000",
+    },
+    {
+      advertiser: "New Company 18",
+      latitude: 20.8901,
+      longitude: 78.4567,
+      total_spent: "58000",
+    },
+    {
+      advertiser: "New Company 19",
+      latitude: 13.4567,
+      longitude: 77.8901,
+      total_spent: "56000",
+    },
+    {
+      advertiser: "New Company 20",
+      latitude: 19.6789,
+      longitude: 73.4567,
+      total_spent: "60000",
+    },
   ];
 
   return (
