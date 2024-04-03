@@ -4,6 +4,7 @@ import axios from "axios";
 
 const MapChart = () => {
   const [advertisersData, setAdvertisersData] = useState([]);
+  const [selectedStateData, setSelectedStateData] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -20,14 +21,20 @@ const MapChart = () => {
     }
   };
 
-  const [hoveredStateData, setHoveredStateData] = useState(null);
-
   const handleHover = (value) => {
     const hoveredState = value.name;
     const dataForHoveredState = advertisersData.filter(
       (advertiser) => advertiser.state === hoveredState
     );
-    setHoveredStateData(dataForHoveredState);
+    setSelectedStateData(dataForHoveredState);
+  };
+
+  const handleClick = (value) => {
+    const clickedState = value.name;
+    const dataForClickedState = advertisersData.filter(
+      (advertiser) => advertiser.state === clickedState
+    );
+    setSelectedStateData(dataForClickedState);
   };
 
   const filteredData = advertisersData.reduce((acc, current) => {
@@ -51,8 +58,8 @@ const MapChart = () => {
             handleHover(value);
             return (
               <div>
-                {hoveredStateData &&
-                  hoveredStateData.map((advertiser, index) => (
+                {selectedStateData &&
+                  selectedStateData.map((advertiser, index) => (
                     <div key={index}>
                       <p>Advertiser: {advertiser.advertiser}</p>
                       <p>Total Spent: {advertiser.total_spent}</p>
@@ -61,6 +68,7 @@ const MapChart = () => {
               </div>
             );
           }}
+          onClick={({ value }) => handleClick(value)}
           mapLayout={{
             startColor: "#b3d1ff",
             endColor: "#005ce6",
