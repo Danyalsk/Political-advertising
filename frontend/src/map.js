@@ -13,6 +13,7 @@ const Map = () => {
   const [stateNames, setStateNames] = useState([]);
   const [postOfficeData, setPostOfficeData] = useState([]);
   const [selectedPostOffice, setSelectedPostOffice] = useState(null);
+  const [backendOffline, setBackendOffline] = useState(false); // State to track if backend is offline
 
   useEffect(() => {
     axios
@@ -22,28 +23,41 @@ const Map = () => {
       })
       .catch((error) => {
         console.error("Error fetching state names:", error);
+        // Check if the error indicates backend is offline
+        if (error.response && error.response.status === 503) {
+          setBackendOffline(true);
+        }
       });
   }, []);
 
   useEffect(() => {
     if (selectedState) {
       axios
-        .get(`http://localhost:3001/postoffice?statename=${selectedState}`)
+        .get(
+          `https://political-advertising-2.onrender.com/postoffice?statename=${selectedState}`
+        )
         .then((response) => {
           setPostOfficeData(response.data);
         })
         .catch((error) => {
           console.error("Error fetching post office data:", error);
+          // Check if the error indicates backend is offline
+          if (error.response && error.response.status === 503) {
+            setBackendOffline(true);
+          }
         });
     } else {
-      // If no state is selected, fetch all post office data
       axios
-        .get("http://localhost:3001/postoffice")
+        .get("https://political-advertising-2.onrender.com/postoffice")
         .then((response) => {
           setPostOfficeData(response.data);
         })
         .catch((error) => {
           console.error("Error fetching post office data:", error);
+          // Check if the error indicates backend is offline
+          if (error.response && error.response.status === 503) {
+            setBackendOffline(true);
+          }
         });
     }
   }, [selectedState]);
@@ -62,6 +76,22 @@ const Map = () => {
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      {backendOffline && (
+        <div
+          className="toast"
+          style={{
+            position: "absolute",
+            top: 20,
+            left: 20,
+            backgroundColor: "red",
+            color: "white",
+            padding: 10,
+            borderRadius: 5,
+          }}
+        >
+          Backend is offline. Please try again later.
+        </div>
+      )}
       <select
         value={selectedState}
         onChange={handleStateSelect}
