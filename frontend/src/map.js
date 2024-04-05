@@ -17,7 +17,7 @@ const Map = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/statename")
+      .get("https://political-advertising-2.onrender.com/statename")
       .then((response) => {
         setStateNames(response.data);
       })

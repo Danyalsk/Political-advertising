@@ -25,7 +25,7 @@ app.get("/postoffice", async (req, res, next) => {
       query += ` WHERE statename = '${statename}'`;
     }
 
-    query += " LIMIT 300"; // Add LIMIT clause at the end
+    query += " LIMIT 450"; // Add LIMIT clause at the end
 
     const { rows } = await pgPool.query(query);
     res.json(rows);
