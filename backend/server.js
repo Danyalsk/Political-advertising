@@ -17,12 +17,20 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal Server Error" });
 });
 
-app.get("/postoffice", async (_, res, next) => {
+app.get("/postoffice", async (req, res, next) => {
   try {
-    const query =
-      "SELECT officename, pincode, regionname, statename, expense, longitude, latitude FROM post_offices order by random() LIMIT 400";
-    const { rows } = await pgPool.query(query);
+    const { statename } = req.query; // Extract statename from the query parameters
+    let query =
+      "SELECT officename, pincode, regionname, statename, expense, longitude, latitude FROM post_offices";
 
+    if (statename) {
+      // If statename is provided, add a WHERE clause to filter by statename
+      query += ` WHERE statename = '${statename}'`;
+    }
+
+    query += " LIMIT 300"; // Add LIMIT clause at the end
+
+    const { rows } = await pgPool.query(query);
     res.json(rows);
   } catch (error) {
     // Pass the error to the error handling middleware

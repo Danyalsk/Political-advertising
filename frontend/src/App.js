@@ -1,28 +1,54 @@
-// App.js
 import React from "react";
-import "./App.css";
-import MapChart from "./map";
+import Map from "./map";
 
 function App() {
   return (
-    <div className="landing-page">
-      <div className="content">
-        <h1 className="title">India Political Advertisement Map</h1>
-        <p className="description">
-          Welcome to the India Political Advertisement Map. This map displays
-          data on political advertisements across India. Explore different
-          regions and discover insights into political advertising trends.
+    <div style={styles.landingPage}>
+      <div style={styles.content}>
+        <h1 style={styles.title}>Post Office Expense Map</h1>
+        <p style={styles.description}>
+          This map displays data on expenses of post offices across India.
+          Explore different regions and discover insights into post office
+          expense trends.
         </p>
-        <div className="description1">
-          <h2>Click on the pins to view details of political advertisers.</h2>
-        </div>
-        <div style={{ position: "relative" }}>
-          {/* Pass handlePinClick function as a prop to MapChart */}
-          <MapChart style={{ position: "relative" }} />
+        <div style={styles.mapContainer}>
+          {/* Render the Map component */}
+          <Map />
         </div>
       </div>
     </div>
   );
 }
+
+const styles = {
+  landingPage: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+    backgroundColor: "#212121",
+  },
+  content: {
+    textAlign: "center",
+    padding: "40px",
+    maxWidth: "800px",
+    margin: "auto", // Added margin to center the content vertically
+  },
+  title: {
+    fontSize: "3rem",
+    color: "#64b5f6",
+    marginBottom: "20px",
+  },
+  description: {
+    fontSize: "1.2rem",
+    color: "#ffffff",
+    marginBottom: "40px",
+  },
+  mapContainer: {
+    position: "relative",
+  },
+};
 
 export default App;
