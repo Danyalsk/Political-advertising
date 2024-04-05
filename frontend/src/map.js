@@ -12,7 +12,6 @@ const Map = () => {
   const [selectedState, setSelectedState] = useState("");
   const [stateNames, setStateNames] = useState([]);
   const [postOfficeData, setPostOfficeData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [selectedPostOffice, setSelectedPostOffice] = useState(null);
 
   useEffect(() => {
@@ -20,11 +19,9 @@ const Map = () => {
       .get("http://localhost:3001/statename")
       .then((response) => {
         setStateNames(response.data);
-        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching state names:", error);
-        setLoading(false);
       });
   }, []);
 
