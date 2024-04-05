@@ -6,10 +6,8 @@ const port = 3001;
 const cors = require("cors");
 
 // Configure CORS to allow requests only from http://localhost:3000
-const corsOptions = {
-  origin: "http://localhost:3000",
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 // Middleware to handle errors
 app.use((err, req, res, next) => {
